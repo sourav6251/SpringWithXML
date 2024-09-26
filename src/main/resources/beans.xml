@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:info.properties"/>
+
+    <bean id="Bean" class="com.XML.ProjectManager">
+
+        <constructor-arg name="development" value="${Development}"/>
+        <constructor-arg name="projectName" value="${projectName}"/>
+        <property name="service" ref="teamB"/>  <!--can use teamA or teamC as needed-->
+    </bean>
+
+    <bean id="teamA" class="com.XML.TeamA">
+        <constructor-arg name="amount" value="${A.amount}"/>
+        <constructor-arg name="time" value="${A.time}"/>
+        <constructor-arg name="teamMember" value="${A.TeamMember}"/>
+    </bean>
+    <bean id="teamB" class="com.XML.TeamB">
+        <constructor-arg name="amount" value="${B.amount}"/>
+        <constructor-arg name="time" value="${B.time}"/>
+        <constructor-arg name="teamMember" value="${B.TeamMember}"/>
+    </bean>
+    <bean id="teamC" class="com.XML.TeamC">
+        <constructor-arg name="amount" value="${C.amount}"/>
+        <constructor-arg name="time" value="${C.time}"/>
+        <constructor-arg name="teamMember" value="${C.TeamMember}"/>
+    </bean>
+
+</beans>
